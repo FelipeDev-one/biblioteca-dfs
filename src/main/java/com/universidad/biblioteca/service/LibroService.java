@@ -2,6 +2,7 @@ package com.universidad.biblioteca.service;
 
 import com.universidad.biblioteca.repository.LibroRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +36,19 @@ public class LibroService {
     //Método para eliminar los libros
     public void eliminar(Long id){
         libroRepository.deleteById(id);
+    }
+
+    //Llamado a consultar personalizadas en el Repository}
+    //Query nativo
+    public List<Libro> buscarTituloParecido(String titulo){
+        return libroRepository.buscarPorTituloParecido(titulo);
+    }
+    //Query creado por Spring
+    public List<Libro> buscarTituloLike(String titulo){
+        return libroRepository.findByTituloCotainningIgnoreCase(titulo);
+    }
+    //Query JPQL
+    public List<Libro> buscarPrecioBajo(BigDecimal precio){
+        return libroRepository.encontrarPreciosBajosLibros(precio);
     }
 }
