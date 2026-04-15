@@ -44,4 +44,9 @@ public class Libro {
     @JoinColumn(name = "categoria_id", nullable = false)
     //Traer el objeto completo 
     private Categoria categoria;
+
+    public void setId(Long id2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }
