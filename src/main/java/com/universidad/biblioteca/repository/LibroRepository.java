@@ -27,7 +27,19 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
 
         //Querys personalizadas usando el lenguaje de JPA
         //JPQL
-        @Query("SELECT l FROM Libro WHERE l.categoria.id = :categoriaId")
+        @Query("SELECT lib FROM Libro WHERE lib.categoria.id = :categoriaId")
         List<Libro> encontrarLibroPorCategoria(@Param("categoriaId") Long categoriaId);
+
+        @Query("SELECT lib FROM Libro WHERE lib.precio <= :precioMax ORDER BY lib.precio DESC")
+        List<Libro> encontrarPreciosBajosLibros(@Param("precioMax") BigDecimal precio);
+
+        //Querys  personalizadas usando SQL Nativo
+        //value para la sentencia SQL
+        //nativeQuery para indicarle que es SQL nativo
+        @Query(
+            value = "SELECT * FROM libros WHERE titulo LIKE CONCAT('%', :testo, '%')",
+            nativeQuery = true
+        )
+        List<Libro> buscarPorTituloParecido(@Param("texto") String texto);
 
 }

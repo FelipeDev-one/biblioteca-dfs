@@ -1,7 +1,6 @@
 package com.universidad.biblioteca.controller;
 
-import com.universidad.biblioteca.repository.CategoriaRepository;
-import com.universidad.biblioteca.repository.LibroRepository;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +24,9 @@ import jakarta.validation.Valid;
 //la URL base para acceder a este archivo
 @RequestMapping("/api/categorias") //No pueden tener carácter especial, espacios, Ñ, SOLO PALABRAS
 public class CategoriaController {
-    private final LibroRepository LibroRepository;
-    private final CategoriaRepository CategoriaRepository;
+
     @Autowired
     private CategoriaService categoriaService;
-
-    CategoriaController(CategoriaRepository categoriaRepository, LibroRepository libroRepository) {
-        this.categoriaRepository = categoriaRepository;
-        this.libroRepository = libroRepository;
-    }
-
     //Endpoints accesibles para este controlador
 
     //Método GET --> Permite obtener y mostrar datos (SELECT)

@@ -1,12 +1,13 @@
 package com.universidad.biblioteca.config;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.universidad.biblioteca.model.Categoria;
 import com.universidad.biblioteca.model.Libro;
 import com.universidad.biblioteca.repository.CategoriaRepository;
 import com.universidad.biblioteca.repository.LibroRepository;
-import java.math.BigDecimal;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 //Obliga a ejecutarse al correr el programa (run)
 //y Spring se encarga de ejecutar únicamente después que el contexto de la app
 //Y la DB fueron creadas
-public class DataInitializer {
+public class DataInitializer implements CommandLineRunner {
     //Inyectar los repositorios, permitirán hacer el INSERT porque contienen el CRUD
     private final CategoriaRepository CategoriaRepository;
     private final LibroRepository LibroRepository;
