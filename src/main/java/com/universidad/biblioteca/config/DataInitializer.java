@@ -2,9 +2,11 @@ package com.universidad.biblioteca.config;
 
 import org.springframework.stereotype.Component;
 
+import com.universidad.biblioteca.model.Categoria;
+import com.universidad.biblioteca.model.Libro;
 import com.universidad.biblioteca.repository.CategoriaRepository;
 import com.universidad.biblioteca.repository.LibroRepository;
-
+import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +32,29 @@ public class DataInitializer {
             log.info("La DB ya tiene datos, se omite la carga inicial");
             return; //Termina la ejecución de la función porque la obliga a salir de ella
         }
-        
+
+        log.info("DB Vacia, insertando datos iniciales...");
+        //Cargamos los datos iniciales en la tabla categoría
+        Categoria cat1 = CategoriaRepository.save(
+            new Categoria(null, "El Diaria de Anna Frank", "La trágica vida de Anna Frank")
+        );
+
+        Categoria cat2 = CategoriaRepository.save(
+            new Categoria(null, "Ciencia Ficción", "Imaginación y aventura futurista")
+        );
+
+        //Insertamos los libros
+        LibroRepository.save(new Libro(null, "Diario de Anna Frank", "DF22323", 
+        new java.math.BigDecimal(29990.99), cat2)
+        );
+        LibroRepository.save(new Libro(null, "La familia Wakatela", "DF223-2", 
+        new java.math.BigDecimal(19990.99), cat1)
+        );
+
+        //Mostrar un mensaje para indicar los insert correctos
+        log.info("{} categorias y {} libros insertados correctamente",
+            CategoriaRepository.count(), LibroRepository.count()
+        );
     }
 
 }

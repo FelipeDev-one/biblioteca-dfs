@@ -25,8 +25,8 @@ import jakarta.validation.Valid;
 //la URL base para acceder a este archivo
 @RequestMapping("/api/categorias") //No pueden tener carácter especial, espacios, Ñ, SOLO PALABRAS
 public class CategoriaController {
-    private final LibroRepository libroRepository;
-    private final CategoriaRepository categoriaRepository;
+    private final LibroRepository LibroRepository;
+    private final CategoriaRepository CategoriaRepository;
     @Autowired
     private CategoriaService categoriaService;
 
