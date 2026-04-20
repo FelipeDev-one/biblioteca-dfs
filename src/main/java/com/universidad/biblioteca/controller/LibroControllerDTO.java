@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.universidad.biblioteca.dto.LibroRequestDTO;
@@ -66,6 +67,13 @@ public class LibroControllerDTO {
         }
         libroService.eliminarLibro(id);
         return ResponseEntity.noContent().build();
+    }
+    //Método personalizados
+    @GetMapping("/buscar")
+    public ResponseEntity<List<LibroResponseDTO>> buscarPorTitulo(
+        @RequestParam String titulo
+    ){
+        return ResponseEntity.ok(libroService.buscarPorTitulo(titulo));
     }
 }
 
