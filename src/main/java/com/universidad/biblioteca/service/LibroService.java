@@ -13,6 +13,7 @@ import com.universidad.biblioteca.model.Libro;
 
 import lombok.RequiredArgsConstructor;
 
+//Este servicio se elimina al implementar DTO y se usa el otro LibroServiceDTO
 @Service
 //Permite inyectar las dependencias mediante el método
 //constructor y los genera como tipo de acceso final

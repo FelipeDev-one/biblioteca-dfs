@@ -42,4 +42,6 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
         )
         List<Libro> buscarPorTituloParecido(@Param("texto") String titulo);
 
+        List<Libro> findByTituloContainingIgnoreCase(String texto);
+
 }
