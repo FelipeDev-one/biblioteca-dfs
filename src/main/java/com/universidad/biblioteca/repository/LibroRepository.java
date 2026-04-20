@@ -37,7 +37,7 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
         //value para la sentencia SQL
         //nativeQuery para indicarle que es SQL nativo
         @Query(
-            value = "SELECT * FROM libros WHERE titulo LIKE CONCAT('%', :testo, '%')",
+            value = "SELECT * FROM libros WHERE titulo LIKE CONCAT('%', :texto, '%')",
             nativeQuery = true
         )
         List<Libro> buscarPorTituloParecido(@Param("texto") String titulo);

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
 import com.universidad.biblioteca.model.Libro;
 import com.universidad.biblioteca.service.LibroService;
@@ -65,5 +67,11 @@ public class LibroController {
         }
         libroService.eliminar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    //Llamando a los service nuevos de consultas personalizadas
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Libro>> buscarPorTitulo(@RequestParam String titulo){
+        return ResponseEntity.ok(libroService.buscarTituloParecido(titulo));
     }
 }
