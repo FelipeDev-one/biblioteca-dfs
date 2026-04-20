@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LibroRequestDTO {
 
-    //Se deben trasladar todas las validaciones del modelo al DTO
+    //Se deben trasladar todas las validaciones del modelo al DTO 
+    //porque todas las validaciones llegarán acá
     @NotBlank(message = "EL titulo no puede estar vacio")
     @Size(max= 200, message = "El titulo no puede superar los 200 carácteres")
     private String titulo;
