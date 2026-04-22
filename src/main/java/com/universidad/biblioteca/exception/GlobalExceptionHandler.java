@@ -28,4 +28,18 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errores);
     }
 
+    //Errores de negocio
+    //Categoria no encontrada
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, String>> handlerRuntimeException(
+        RuntimeException ex
+    ){
+        Map<String, String> error = new LinkedHashMap<>();
+        error.put("Error", ex.getMessage());
+        //400 --> El cliente envió algún dato que no existe
+        //manipulación de errores es por parte del envió de datos del cliente
+        //no del servidor
+        return ResponseEntity.badRequest().body(error);
+    }
+
 }
